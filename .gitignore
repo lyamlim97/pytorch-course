@@ -3,5 +3,7 @@ __pycache__
 venv/
 .python-version
 data/FashionMNIST
+data/pizza_steak_sushi.zip
+data/pizza_steak_sushi
 exercises/MNIST
 exercises/FashionMNIST
