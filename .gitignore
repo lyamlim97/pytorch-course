@@ -7,3 +7,5 @@ exercises/MNIST
 exercises/FashionMNIST
 exercises/data
 exercises/pizza_dad.jpeg
+05_going_modular/data
+05_going_modular/models
