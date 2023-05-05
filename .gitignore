@@ -2,14 +2,8 @@
 __pycache__
 venv/
 .python-version
-data/FashionMNIST
-data/pizza_steak_sushi.zip
-data/pizza_steak_sushi
-data/04-pizza-dad.jpeg
+data
 exercises/MNIST
 exercises/FashionMNIST
-exercises/data/pizza_steak_sushi.zip
-exercises/data/pizza_steak_sushi
-exercises/data/pizza_steak_sushi_20_percent.zip
-exercises/data/pizza_steak_sushi_20_percent
+exercises/data
 exercises/pizza_dad.jpeg
