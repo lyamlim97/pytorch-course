@@ -1,11 +1,10 @@
 """
 Contains functions for training and testing a PyTorch model.
 """
-from typing import Dict, List, Tuple
-
 import torch
 
 from tqdm.auto import tqdm
+from typing import Dict, List, Tuple
 
 
 def train_step(
@@ -72,10 +71,7 @@ def train_step(
 
 
 def test_step(
-    model: torch.nn.Module,
-    dataloader: torch.utils.data.DataLoader,
-    loss_fn: torch.nn.Module,
-    device: torch.device,
+    model: torch.nn.Module, dataloader: torch.utils.data.DataLoader, loss_fn: torch.nn.Module, device: torch.device
 ) -> Tuple[float, float]:
     """Tests a PyTorch model for a single epoch.
 
@@ -132,7 +128,7 @@ def train(
     loss_fn: torch.nn.Module,
     epochs: int,
     device: torch.device,
-) -> Dict[str, List[float]]:
+) -> Dict[str, List]:
     """Trains and tests a PyTorch model.
 
     Passes a target PyTorch models through train_step() and test_step()
@@ -167,18 +163,15 @@ def train(
     # Create empty results dictionary
     results = {"train_loss": [], "train_acc": [], "test_loss": [], "test_acc": []}
 
+    # Make sure model on target device
+    model.to(device)
+
     # Loop through training and testing steps for a number of epochs
     for epoch in tqdm(range(epochs)):
         train_loss, train_acc = train_step(
-            model=model,
-            dataloader=train_dataloader,
-            loss_fn=loss_fn,
-            optimizer=optimizer,
-            device=device,
+            model=model, dataloader=train_dataloader, loss_fn=loss_fn, optimizer=optimizer, device=device
         )
-        test_loss, test_acc = test_step(
-            model=model, dataloader=test_dataloader, loss_fn=loss_fn, device=device
-        )
+        test_loss, test_acc = test_step(model=model, dataloader=test_dataloader, loss_fn=loss_fn, device=device)
 
         # Print out what's happening
         print(
